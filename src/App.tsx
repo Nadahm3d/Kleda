@@ -1,12 +1,9 @@
-import './App.css'
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <p>Dette er mitt TypeScript React-prosjekt</p>
+    <div className="h-screen bg-gray-100 p-10">
+      <h1 className="text-4xl font-bold text-green-600">
+        Tailwind fungerer i v4! 🌟
+      </h1>
     </div>
-  )
+  );
 }
-
-export default App
