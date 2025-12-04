@@ -1,58 +1,78 @@
+import { ArrowUp, ArrowDown, MousePointer2, Heart } from "lucide-react";
 import { topProducts } from "../../data/topProducts";
-import { Heart, MousePointer2 } from "lucide-react";
 
 export default function TopProductsTable() {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-card">
-      <h3 className="text-lg font-semibold text-kleda-primary mb-4">
-        Top 5 mest solgte produkter
-      </h3>
+    <div className="mt-12">
+      <h2 className="text-xl font-semibold text-kleda-primary mb-4">
+        Topp 5 mest solgte produkter
+      </h2>
 
       <table className="w-full text-left">
-        <thead className="text-gray-500 text-sm border-b">
-          <tr>
-            <th className="pb-2">Produkt</th>
-            <th className="pb-2">Brand</th>
-            <th className="pb-2 text-right w-20">Solgt</th>
-            <th className="pb-2 text-right w-24">Klikk</th>
-            <th className="pb-2 text-right w-28">Favorisert</th>
+        <thead>
+          <tr className="text-gray-600 text-sm border-b">
+            <th className="pb-3">Produkt</th>
+            <th className="pb-3 text-center">Solgt</th>
+            <th className="pb-3 text-center">Klikk</th>
+            <th className="pb-3 text-center">Favorisert</th>
           </tr>
         </thead>
 
-        <tbody className="text-sm text-kleda-dark">
+        <tbody>
           {topProducts.map((product) => (
-            <tr key={product.id} className="border-b last:border-b-0">
-              
-              {/* Produkt + bilde */}
-              <td className="py-3 flex items-center gap-3">
+            <tr key={product.id} className="border-b hover:bg-gray-50 transition">
+              {/* Produkt info */}
+              <td className="py-4 flex items-center gap-4">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-10 h-10 rounded-md object-cover"
+                  className="w-12 h-12 rounded-lg object-cover"
                 />
-                {product.name}
+                <div>
+                  <p className="font-medium text-kleda-dark">{product.name}</p>
+                  <p className="text-sm text-gray-500">{product.brand}</p>
+                </div>
               </td>
 
-              {/* Brand */}
-              <td className="py-3">{product.brand}</td>
-
               {/* Solgt */}
-              <td className="py-3 text-right font-medium">
+              <td className="py-4 text-center font-semibold text-kleda-dark">
                 {product.sold}
+                {product.trendSold > 0 ? (
+                  <ArrowUp className="inline ml-2 text-green-600" size={16} />
+                ) : (
+                  <ArrowDown className="inline ml-2 text-red-600" size={16} />
+                )}
               </td>
 
               {/* Klikk */}
-              <td className="py-3 text-right whitespace-nowrap flex justify-end items-center gap-1">
-                <MousePointer2 size={16} className="text-gray-500" />
-                {product.clicks}
+              <td className="py-4 text-center">
+                <span className="flex justify-center items-center gap-2">
+                  <MousePointer2 className="text-kleda-dark" size={16} />
+                  <span className="font-medium text-kleda-dark">
+                    {product.clicks}
+                  </span>
+                  {product.trendClicks > 0 ? (
+                    <ArrowUp className="text-green-600" size={16} />
+                  ) : (
+                    <ArrowDown className="text-red-600" size={16} />
+                  )}
+                </span>
               </td>
 
               {/* Favorisert */}
-              <td className="py-3 text-right whitespace-nowrap flex justify-end items-center gap-1">
-                <Heart size={16} className="text-kleda-primary" />
-                {product.favorites}
+              <td className="py-4 text-center">
+                <span className="flex justify-center items-center gap-2">
+                  <Heart className="text-kleda-primary" size={16} />
+                  <span className="font-medium text-kleda-dark">
+                    {product.favorites}
+                  </span>
+                  {product.trendFavorites > 0 ? (
+                    <ArrowUp className="text-green-600" size={16} />
+                  ) : (
+                    <ArrowDown className="text-red-600" size={16} />
+                  )}
+                </span>
               </td>
-
             </tr>
           ))}
         </tbody>

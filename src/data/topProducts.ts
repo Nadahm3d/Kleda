@@ -1,4 +1,8 @@
-import kjole from "../assets/kjole.jpg.avif"
+import kjole from "../assets/images/kjole.jpg.avif";
+import jogge from "../assets/images/jogge.jpg.avif";
+import genser from "../assets/images/genser.jpg.avif";
+import nike from "../assets/images/nike.jpg.avif";
+import tskjorte from "../assets/images/tskjorte.jpg";
 
 export const topProducts = [
     {
@@ -8,7 +12,10 @@ export const topProducts = [
       sold: 430,
       clicks: 1800,
       favorites: 320,
-      image: kjole
+      trendSold: 1,
+      trendClicks: -1,
+      trendFavorites: 1,
+      image: kjole,
     },
     {
       id: 2,
@@ -17,34 +24,46 @@ export const topProducts = [
       sold: 380,
       clicks: 1500,
       favorites: 280,
-      image: "https://via.placeholder.com/50"
+      trendSold: -1,
+      trendClicks: 1,
+      trendFavorites: 1,
+      image: jogge,
     },
     {
       id: 3,
-      name: "T-shirt – Nike Classic",
-      brand: "Nike",
-      sold: 350,
-      clicks: 2100,
-      favorites: 410,
-      image: "https://via.placeholder.com/50"
+      name: "Genser – Ullmix",
+      brand: "Dressmann",
+      sold: 290,
+      clicks: 980,
+      favorites: 240,
+      trendSold: 1,
+      trendClicks: 1,
+      trendFavorites: -1,
+      image: genser,
     },
     {
       id: 4,
-      name: "Genser – Oversized",
-      brand: "H&M",
-      sold: 330,
-      clicks: 1750,
-      favorites: 290,
-      image: "https://via.placeholder.com/50"
+      name: "Sneakers – Streetstyle",
+      brand: "Nike",
+      sold: 510,
+      clicks: 2200,
+      favorites: 410,
+      trendSold: 1,
+      trendClicks: 1,
+      trendFavorites: 1,
+      image: nike,
     },
     {
       id: 5,
-      name: "Treningsshorts – Performance",
-      brand: "Nike",
-      sold: 300,
-      clicks: 1600,
-      favorites: 250,
-      image: "https://via.placeholder.com/50"
-    }
+      name: "T-skjorte – Premium Cotton",
+      brand: "Zara",
+      sold: 260,
+      clicks: 760,
+      favorites: 180,
+      trendSold: -1,
+      trendClicks: -1,
+      trendFavorites: 1,
+      image: tskjorte,
+    },
   ];
   
