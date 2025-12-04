@@ -4,66 +4,84 @@ import genser from "../assets/images/genser.jpg.avif";
 import nike from "../assets/images/nike.jpg.avif";
 import tskjorte from "../assets/images/tskjorte.jpg";
 
-export const topProducts = [
-    {
-      id: 1,
-      name: "Kjole – Sommerkoleksjon",
-      brand: "H&M",
-      sold: 430,
-      clicks: 1800,
-      favorites: 320,
-      trendSold: 1,
-      trendClicks: -1,
-      trendFavorites: 1,
-      image: kjole,
-    },
-    {
-      id: 2,
-      name: "Joggebukse – Basic",
-      brand: "Cubus",
-      sold: 380,
-      clicks: 1500,
-      favorites: 280,
-      trendSold: -1,
-      trendClicks: 1,
-      trendFavorites: 1,
-      image: jogge,
-    },
-    {
-      id: 3,
-      name: "Genser – Ullmix",
-      brand: "Dressmann",
-      sold: 290,
-      clicks: 980,
-      favorites: 240,
-      trendSold: 1,
-      trendClicks: 1,
-      trendFavorites: -1,
-      image: genser,
-    },
-    {
-      id: 4,
-      name: "Sneakers – Streetstyle",
-      brand: "Nike",
-      sold: 510,
-      clicks: 2200,
-      favorites: 410,
-      trendSold: 1,
-      trendClicks: 1,
-      trendFavorites: 1,
-      image: nike,
-    },
-    {
-      id: 5,
-      name: "T-skjorte – Premium Cotton",
-      brand: "Zara",
-      sold: 260,
-      clicks: 760,
-      favorites: 180,
-      trendSold: -1,
-      trendClicks: -1,
-      trendFavorites: 1,
-      image: tskjorte,
-    },
-  ];
-  
+export type TopProduct = {
+  id: number;
+  name: string;
+  brand: string;
+  image: string;
+  productUrl: string;
+  sold: { day: number; month: number; year: number };
+  clicks: { day: number; month: number; year: number };
+  favorites: { day: number; month: number; year: number };
+  trendSold: number;
+  trendClicks: number;
+  trendFavorites: number;
+};
+
+export const topProducts: TopProduct[] = [
+  {
+    id: 1,
+    name: "Kjole – Sommerkoleksjon",
+    brand: "H&M",
+    image: kjole,
+    productUrl: "https://www2.hm.com/no_no/productpage.html",
+    sold: { day: 12, month: 310, year: 1280 },
+    clicks: { day: 160, month: 1800, year: 8900 },
+    favorites: { day: 6, month: 240, year: 1300 },
+    trendSold: 1,
+    trendClicks: -1,
+    trendFavorites: 1,
+  },
+  {
+    id: 2,
+    name: "Joggebukse – Basic",
+    brand: "Cubus",
+    image: jogge,
+    productUrl: "https://cubus.com/",
+    sold: { day: 19, month: 260, year: 980 },
+    clicks: { day: 200, month: 1500, year: 7600 },
+    favorites: { day: 5, month: 210, year: 1150 },
+    trendSold: -1,
+    trendClicks: 1,
+    trendFavorites: 1,
+  },
+  {
+    id: 3,
+    name: "Genser – Ullmix",
+    brand: "Dressmann",
+    image: genser,
+    productUrl: "https://dressmann.com/",
+    sold: { day: 24, month: 329, year: 1299 },
+    clicks: { day: 110, month: 1100, year: 5900 },
+    favorites: { day: 17, month: 250, year: 1200 },
+    trendSold: 1,
+    trendClicks: 1,
+    trendFavorites: -1,
+  },
+  {
+    id: 4,
+    name: "Sneakers – Streetstyle",
+    brand: "Nike",
+    image: nike,
+    productUrl: "https://www.nike.com/no/",
+    sold: { day: 15, month: 410, year: 1450 },
+    clicks: { day: 210, month: 2200, year: 10500 },
+    favorites: { day: 10, month: 320, year: 1500 },
+    trendSold: 1,
+    trendClicks: 1,
+    trendFavorites: 1,
+  },
+  {
+    id: 5,
+    name: "T-skjorte – Premium Cotton",
+    brand: "Zara",
+    image: tskjorte,
+    productUrl: "https://www.zara.com/",
+    sold: { day: 6, month: 325, year: 660 },
+    clicks: { day: 70, month: 760, year: 4200 },
+    favorites: { day: 3, month: 140, year: 800 },
+    trendSold: -1,
+    trendClicks: -1,
+    trendFavorites: 1,
+  },
+];
