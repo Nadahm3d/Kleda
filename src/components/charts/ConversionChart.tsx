@@ -6,7 +6,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-  Legend,
+  
 } from "recharts";
 import { conversionData } from "../../data/conversionData";
 
