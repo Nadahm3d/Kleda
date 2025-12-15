@@ -10,8 +10,10 @@ import {
 } from "recharts";
 import { conversionData } from "../../data/conversionData";
 
+type Period = "day" | "month" | "year";
+
 export default function ConversionChart() {
-  const [filter, setFilter] = useState<"day" | "month" | "year">("month");
+  const [filter, setFilter] = useState<Period>("month");
 
   const periods = [
     { key: "day", label: "Dag" },
@@ -22,7 +24,7 @@ export default function ConversionChart() {
   return (
     <div className="bg-white p-6 rounded-xl shadow-card">
       {/* Header + Filter */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-2">
         <h3 className="text-lg font-semibold text-kleda-dark">
           Konverteringsrate
         </h3>
@@ -44,25 +46,36 @@ export default function ConversionChart() {
         </div>
       </div>
 
+      {/* Forklaring */}
+      <p className="text-sm text-kleda-gray mb-4">
+        Viser konverteringsrate i prosent (%)
+      </p>
+
       {/* Chart */}
-      <div className="h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={conversionData[filter]}>
-            <XAxis dataKey="name" stroke="#6B7280" />
-            <YAxis stroke="#6B7280" />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="rate"
-              stroke="#C34C57"
-              strokeWidth={3}
-              dot={{ r: 5 }}
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+      <div className="h-[320px]">
+  <ResponsiveContainer width="100%" height="100%">
+    <LineChart
+      data={conversionData[filter]}
+      margin={{ top: 24, right: 20 }}
+    >
+      <XAxis dataKey="name" stroke="#6B7280" />
+      <YAxis
+        stroke="#6B7280"
+        tickFormatter={(v) => `${v}%`}
+        domain={[0, "dataMax + 1"]}
+        allowDataOverflow
+      />
+      <Tooltip formatter={(v: number) => `${v}%`} />
+      <Line
+        type="monotone"
+        dataKey="rate"
+        stroke="#C34C57"
+        strokeWidth={3}
+      />
+    </LineChart>
+  </ResponsiveContainer>
+</div>
+
     </div>
   );
 }
